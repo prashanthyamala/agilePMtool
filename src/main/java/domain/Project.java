@@ -2,11 +2,14 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
-
+import javax.persistence.PreUpdate;
+	
+@Entity
 public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -131,7 +134,7 @@ public class Project {
 	protected void onCreate() {
 		this.created_at = new Date();
 	}
-	@PrePersist
+	@PreUpdate
 	protected void onUpdate() {
 		this.end_date = new Date();
 	}
